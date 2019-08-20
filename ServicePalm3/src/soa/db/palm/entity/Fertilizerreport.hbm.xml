@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 18, 2019 10:21:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="soa.db.palm.entity.Fertilizerreport" table="fertilizerreport" catalog="palmtest2" optimistic-lock="version">
+        <id name="idFertilizerReport" type="java.lang.Integer">
+            <column name="idFertilizerReport" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="farmer" class="soa.db.palm.entity.Farmer" fetch="select">
+            <column name="Farmer_idFarmer" not-null="true" />
+        </many-to-one>
+        <property name="fertilizer" type="string">
+            <column name="Fertilizer" length="45" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="volume" type="java.lang.Integer">
+            <column name="volume" />
+        </property>
+        <property name="datereport" type="timestamp">
+            <column name="datereport" length="19" not-null="true" />
+        </property>
+        <set name="imagefertilizerreports" table="imagefertilizerreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FertilizerReport_idFertilizerReport" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Imagefertilizerreport" />
+        </set>
+        <set name="palmtofertilizerreports" table="palmtofertilizerreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FertilizerReport_idFertilizerReport" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtofertilizerreport" />
+        </set>
+    </class>
+</hibernate-mapping>

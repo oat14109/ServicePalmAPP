@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 18, 2019 10:21:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="soa.db.palm.entity.Bugreport" table="bugreport" catalog="palmtest2" optimistic-lock="version">
+        <id name="idBug" type="java.lang.Integer">
+            <column name="idBug" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="farmer" class="soa.db.palm.entity.Farmer" fetch="select">
+            <column name="Farmer_idFarmer" not-null="true" />
+        </many-to-one>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="insecticide" type="java.lang.Integer">
+            <column name="insecticide" />
+        </property>
+        <property name="datereport" type="timestamp">
+            <column name="datereport" length="19" not-null="true" />
+        </property>
+        <set name="imagebugreports" table="imagebugreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Bug_idBug" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Imagebugreport" />
+        </set>
+        <set name="palmtobugreports" table="palmtobugreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Bug_idBug" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtobugreport" />
+        </set>
+    </class>
+</hibernate-mapping>

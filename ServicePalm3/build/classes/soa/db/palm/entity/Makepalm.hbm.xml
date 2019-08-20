@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 18, 2019 10:21:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="soa.db.palm.entity.Makepalm" table="makepalm" catalog="palmtest2" optimistic-lock="version">
+        <id name="idMakePalm" type="java.lang.Integer">
+            <column name="idMakePalm" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="addressplam" class="soa.db.palm.entity.Addressplam" fetch="select">
+            <column name="AddressPlam_idAddressPlam" not-null="true" />
+        </many-to-one>
+        <property name="lat" type="string">
+            <column name="Lat" length="45" />
+        </property>
+        <property name="long_" type="string">
+            <column name="Long" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 18, 2019 10:21:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="soa.db.palm.entity.Addressplam" table="addressplam" catalog="palmtest2" optimistic-lock="version">
+        <id name="idAddressPlam" type="java.lang.Integer">
+            <column name="idAddressPlam" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="farmer" class="soa.db.palm.entity.Farmer" fetch="select">
+            <column name="Farmer_idFarmer" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="lat" type="java.lang.Integer">
+            <column name="Lat" />
+        </property>
+        <property name="lon" type="java.lang.Integer">
+            <column name="Lon" />
+        </property>
+        <property name="addresss" type="string">
+            <column name="addresss" length="45" />
+        </property>
+        <property name="pathImage" type="string">
+            <column name="pathImage" length="100" />
+        </property>
+        <property name="nameImage" type="string">
+            <column name="nameImage" length="100" />
+        </property>
+        <set name="palmtobugreports" table="palmtobugreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtobugreport" />
+        </set>
+        <set name="palmtoweedreports" table="palmtoweedreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtoweedreport" />
+        </set>
+        <set name="palmtocarwaterreports" table="palmtocarwaterreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtocarwaterreport" />
+        </set>
+        <set name="palmtoharvestreports" table="palmtoharvestreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtoharvestreport" />
+        </set>
+        <set name="palmtocutleafreports" table="palmtocutleafreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtocutleafreport" />
+        </set>
+        <set name="palmtofertilizerreports" table="palmtofertilizerreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtofertilizerreport" />
+        </set>
+        <set name="makepalms" table="makepalm" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Makepalm" />
+        </set>
+        <set name="palmtoplantdiseaseses" table="palmtoplantdiseases" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtoplantdiseases" />
+        </set>
+        <set name="palmtowaterreports" table="palmtowaterreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AddressPlam_idAddressPlam" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Palmtowaterreport" />
+        </set>
+    </class>
+</hibernate-mapping>

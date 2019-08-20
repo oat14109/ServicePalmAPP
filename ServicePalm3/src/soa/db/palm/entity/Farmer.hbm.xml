@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 18, 2019 10:21:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="soa.db.palm.entity.Farmer" table="farmer" catalog="palmtest2" optimistic-lock="version">
+        <id name="idFarmer" type="java.lang.Integer">
+            <column name="idFarmer" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="100" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="100" />
+        </property>
+        <property name="fname" type="string">
+            <column name="Fname" length="45" />
+        </property>
+        <property name="lname" type="string">
+            <column name="Lname" length="45" />
+        </property>
+        <property name="idCard" type="java.lang.Long">
+            <column name="idCard" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="65535" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="45" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PhoneNumber" length="15" />
+        </property>
+        <property name="image" type="string">
+            <column name="Image" length="100" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="100" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="addressplams" table="addressplam" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Addressplam" />
+        </set>
+        <set name="fertilizerreports" table="fertilizerreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Fertilizerreport" />
+        </set>
+        <set name="cutleafreports" table="cutleafreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Cutleafreport" />
+        </set>
+        <set name="carwaterreports" table="carwaterreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Carwaterreport" />
+        </set>
+        <set name="rainreports" table="rainreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Rainreport" />
+        </set>
+        <set name="waterreports" table="waterreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Waterreport" />
+        </set>
+        <set name="bugreports" table="bugreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Bugreport" />
+        </set>
+        <set name="weedreports" table="weedreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Weedreport" />
+        </set>
+        <set name="events" table="event" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Event" />
+        </set>
+        <set name="harvestreports" table="harvestreport" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Harvestreport" />
+        </set>
+        <set name="plantdiseaseses" table="plantdiseases" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Farmer_idFarmer" not-null="true" />
+            </key>
+            <one-to-many class="soa.db.palm.entity.Plantdiseases" />
+        </set>
+    </class>
+</hibernate-mapping>
